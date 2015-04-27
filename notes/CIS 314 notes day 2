@@ -1,0 +1,72 @@
+CIS 314 notes day 2
+
+Main memory is working memory is 4-8GB memory chip called RAM
+Memory is an array of linear bytes
+In reality memory can be split into chunks and run in parallel
+
+Kernal Virtual Memory
+User Stack
+Memory mapped ragion for shared library
+Run-time Heap(created by malloc)
+Read/Write data
+Read only code and data
+
+
+Cache memory--in x86 832 words can be held by the processor
+every computer has potentially different cache structure
+SRAM-Static RAM
+2 L1 caches, 1 for instructions 1 for data
+
+register L0
+Cache 1 L1
+Cache 2 L2
+L3 shared among all cores
+Main Memory RAM
+Solid or rotating disk drives
+remote or web
+
+We go from very small, next to the processor, to very large, further from the processor
+
+Processor Package
+
+Set into Cores 1-4..
+
+ina single core..
+register connected to L1 d-cache to L2 unified cache
+
+Course theme, abtraction is good, but dont forget reality..
+
+Optimizing code for hardware architecture
+
+Ints are not Intergers, Floats aren't real numbers
+In python 
+
+50000*50000 in Java = -1794...
+the data type we used implicitly is a signed 32 bit integers 2^32 4bill
+
+use floating point and treat as real numbers, or break the problem down to avoid the limit
+
+1e20 + (-1e20+3.14)=0 because 32bit only stores 7 significant digits. the number is so large that the 3.14 doesn't get added. So this occurs because of limited memory.
+
+with floating point
+
+Need to know assembly but not to write it--it makes pointers much easier to understand
+
+Memory matters
+
+not unbounded
+
+Memory performance is not uniform--cache and virtual memory effects can greatly effect performance
+Better performance if you plot the memory scheme for your cache (close and far big and small)
+
+Stride--how many bytes were moving ie logical stride of one(x8bytes)
+throughput
+size(bytes)
+
+As data set gets larger, we can't store everything in L1 cache.
+
+
+
+
+
+

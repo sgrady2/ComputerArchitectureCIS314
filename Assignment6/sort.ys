@@ -1,0 +1,82 @@
+//Sean Grady
+//CIS 314 Assignment 6
+//sort.ys
+
+#Program to Find minimun from an array.
+
+# Execution begins at address 0
+		.pos 0
+init:   irmovl Stack, %esp         # Setup stack pointer
+        irmovl Stack, %ebp         # Set up base pointer
+        call Main                  # Execute main program
+        halt                       # Terminate program
+        
+        # Array of 10 elements
+    .align 4
+array: .long 0x10
+       .long 0x3
+       .long 0x8
+       .long 0x4
+       .long 0x2
+	   .long 0x9
+       .long 0x5
+       .long 0x7
+       .long 0x6
+       .long 0x1
+
+Main:   pushl %ebp
+        rrmovl %esp, %ebp
+        irmovl $10, %eax
+        pushl %eax                 # Push 10 for the size of my array
+        irmovl array, %edx
+        pushl %edx                 # Push array
+        call BUB                  # BUB(array, size)
+        rrmovl %ebp, %esp
+        popl %ebp
+        ret
+
+       
+BUB : pushl %ebp
+      rrmovl %esp,%ebp
+      mrmovl 8(%ebp),%ecx     # ecx = array
+      mrmovl 12(%ebp),%edx    # edx = size 
+      pushl %ebx      		  # Push callee-saved registers to save them
+      pushl %esi
+      pushl %edi
+      irmovl $-1, %ebx
+      addl %ebx, %edx		  #comparing -1 and 10 using addition, so if its zero or -1 we will jump to exit
+      je Exit                 #the registers being equals means that were done
+
+LoopOuter: rrmovl %ecx, %esi	  # esi = ecx save array in register to hold the first value of array or i
+		   irmovl $4, %ebx		  #ebx = 4 which is the value to increment our array by
+		   subl %esi, %edx		  #compare i and size of array, then jump to the second loop  
+		   je LoopInner
+		   addl %ebx, %esi		  #increment i
+
+LoopInner: rrmovl %ecx, %edi	  #set the value of j for the second loop
+		   addl %ebx, %edi		  #save the of i+1 in register edi to be compared
+		   subl %esi, %edi  	  #compare values a[i] and a[i+1]
+		   jg Swap               #if the value is > 0 then esi is bigger than edi so we want to swap
+		   addl %ebx, %edi		  #increment edi or value of a[i+1]
+
+Swap:	   popl %ebx				  #load stored registers for swap
+		   popl %esi
+		   popl %edi
+		   rrmovl %edi, %ebx		  #temp = array[i]
+		   rrmovl %ebx, %esi		  #array[i] = array[i+1]
+		   rrmovl %esi, %edi		  #array[i+1] = temp
+		   
+
+ 
+
+
+Exit : rrmovl %ebp,%esp
+      popl %ebp
+      ret
+
+
+
+
+# The stack starts here and grows to lower addresses
+    .pos 0x200
+Stack:

@@ -1,0 +1,53 @@
+The stack is geographically addressed (gravity works addresses increase up)
+the stack ADT however is upside down so theres a hole at the lower top and a ceiling at the upper bottom
+the way what ebp and esp is that ebp is the frame pointer to the base stack frame or closer to the bottom of the stack
+the esp is closer to the top of the stack
+
+
+http://www.flickr.com/photos/76029035@N02/68292/6829540293/
+http://btravers.weebly.com/uploads/6/7/2/9/6729909/problem_set_3_solutions.pdf
+
+OxFC = 0x000000FC
+0000 0000 0000 0000 0000 0000 1111 1100
+-128 + 124 = -4
+
+3.25 >> 3 = 11 + .01
+11.01 x 2^1
+1.101
+sig 101
+1+127 = 128 = 10000000
+0 10000000 101000..
+
+The test includes only 32 bit numbers, no 64 bit shit!! !! !!! !! !!!
+cmpl %eax, %edx
+je L1
+ORDER ONLY MATTERS FOR >=
+
+x = 5x + y+ 12
+leal (eax,eax,4), %eax this means x + 4x
+leal 12(eax, ebx), %eax
+
+
+f(unsigned x){
+	
+	x = x<<2; //multiplies by 4
+}
+
+know movl and its relationship to pointers!!
+Know addl and leal!!!!
+cmpl j* jump instructions!! know thiss only going to ask about 6 standard je jne ect..
+^>Labels for jumping L3 L2 ect, practice writing conditionals without curly braces
+no structs on the midterm
+Arrays storage in memory, know malloc and lookup calculations
+Functions %eip (the PC program counter), %ebp %esp return address call ret
+takeaway points
+using masks could be on the test
+
+
+
+finishing assignment 4. 
+-finish optimization of problem 2
+-lookup objdump and gdb for 4
+-start 3
+
+1 page notes front and back

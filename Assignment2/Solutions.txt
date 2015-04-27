@@ -1,0 +1,43 @@
+Sean Grady 
+CIS 314 Assignment 2
+Solutions document #'s 3-5
+
+3.a)0x00000001
+a) this number represents 1 because when each byte of information is broken down the number looks like 00000001 in binary (represented by 8 bits of information in each byte) which is the number 1. The hex representation 0x00000001 is a 32-bit representation of the decimal number 1. 
+
+b) 0x0000012A
+b) This number can be broken down into each individual byte of information (4 bits) as follows from the original 32 bit number :
+0000 0000 0000 0000 0000 0001 0010 1010 = 0x0000012A = 100101010 = 288 in decimal.
+
+c) This one is different because the sign bit (the most significant bit in two's compliment) is 1 for the hex value 
+	0xFFFFFCE6 = 1111 1111 1111 1111 1111 1100 1110 0110. Knowing that this number with all ones( ie 1111 1111 1111...ect) is equal to -1, so I can subtract the values from -1 where there is a 0. ie this number is -1+(-1)+(-8)+(-16)+(-256)+(-512) which equals -794.
+
+d) Now using the same method on the string 0xFFFFFFFF I know that if the string has all ones (said this above) then it represents the value -1 in two's complement.
+
+
+4.a)0x00000000 this number in floating point representation is still all zeroes and represents the number 0 in decimal
+
+b)0x40F00000 = 7.5 This is because we start with the sign bit which is in the first byte 4 (0100), the sign bit is clearly 0 so this will be positive. Now we calculate the exponent which is 10000001 or 129 - 127(2^7-1) = 2. Now we move to the fraction field which has the number (adding a leading 1) 1.1110 0000 and so on so we move shift >>2 which gives 111.1 and the number 7.5
+
+
+c)0x41120000 = 9.125  Firstly the sign bit is equal to zero so the number is going to be positive. Next I take positions 30-23 and calculate the exponent.  10000010 = 130-127=3 so take our decimal (adding a leading one) 1.001001 and >>3
+which does an arithmatic right shift or moves over 3 places to the right of the current decimal. Now we are left with 
+1001.001 which is 9.125
+
+
+d) 0xC39D0000 = -314.0 Using the same method we know this is negative when C is the first byte as C = 1100 So then we move to the fraction field where we can see 10000111 = 135 - 127 = 8 So we move our fraction 1.00111010 >>8 giving 
+100111010 or 314 and no fraction plus the sign bit is a -314.0
+
+
+5.a) 1.0 = 0 011111 000000000 This represents my 16-bit floating point number.  I used the same steps as in problem 4 only this time the size of each field(except the sign bit) changed. So by looking at the number the first bit is 0 because 1.0 is positive. The next exponent field is 111111 because 31-31 is 0 and I dont have a fraction so that works.
+
+b) 8.0 = 0 100010 000000000 Again starting with the sign bit which gives a positive number, the exponent field is equal to 34 (34-31= 3) and the fraction is again left as all zeroes because there is no fraction in 8.0. Now when 1.000000000 gets bitewise right shifted, the result is 1000.0, or 8.0
+
+c) 9.5 = 0 100010 001100000 The sign bit is 0 obviously. The Exponent field is equal to 34 because 34-31 = 3. So when our Fractional field 1.001100000 >> 3 we are left with 1001.1 and the number 9.5
+
+d) -87.125 = 1 100101 010111001 The sign bit here is negative as I separated it into each field (in all 3 problems) and the Exponent field is 37 (37-31= 6) when I shift the value of my fraction field 1.010111001 6 places i get the bin number
+1010111.001 which is 87+1/8= -87.125
+
+
+
+

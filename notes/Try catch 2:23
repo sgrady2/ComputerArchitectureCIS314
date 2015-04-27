@@ -1,0 +1,50 @@
+Try catch
+try{a()b()c()}catch(){}
+stage detection:memory and fetch
+we keep a status register
+a stage can modify the status
+performance
+clock rate is measures in gigahertz billions of cycles per second
+function of stage partitioning and circuit design
+
+CPI- cycles per instruction
+if sequential = to 1
+if pipeline its gonna be higher
+CPI of about 1 is best
+>1 means sometimes we stall or cancel branches
+multiple writebacks allow for <1
+C = clock cycles
+I = instructions executed to completion
+B = bubbles inject CPI = 1.0 + B/I <<- penalty due to stalling
+
+LP = penalty due to load/use
+MP = penalty due to mispredicted branches
+RP = penalty due to the ret 
+Net effect of penalty, add up the results
+
+Paralellism- from lowest lv to highest lv
+Instruction level- ILP ins lv parlism- is pipeline
+Data-Levels (DLP)
+-GPUS have 1000 cores and simply run in paralell to control graphics
+-thread level parallelism TLP 
+-controlling cores in parallel
+
+Modern CPU design has a 5 stage pipeline but its more complex
+fetch decode, instruction cache, execute is highly parallelized, Memory in DataCache, Retirement unit or commitment unit 
+lots of paralellism that take different amounts of time, 
+orginial scoreboarding algorithm or Thomas algorithm
+
+-GRabs instruction bytes from memory,
+hardware dynamically guesses whether brances are taken 
+-translate instructions into operations
+primitive steps rerquired to perform instructions
+typical instruction requres 1-3 ops
+.;
+
+Diviion in a processor
+basically long division
+12*12 120+24, so we use forms of addition 
+dividing by the same number is harsh on the processor
+instead! calculate the recipercol and multiply!
+
+

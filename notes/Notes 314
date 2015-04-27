@@ -1,0 +1,87 @@
+Notes 314
+---------
+x86 machine programming
+originally 16-bit archetecture
+compatible with 8-bit arch
+lots of instructions
+"complex instruction set"CISC--desktop big hot heavy
+Bound by speed of light
+larger the hardware the longer the time it goes back and forth on a larger distance set
+Reduced instruction set computer RISC-- lower power smaller
+3 major--x86(1000) armed risc(100)
+were dealing with a subset of x86 procees
+
+nahalem pipeline stages vs 5 stage pipeline for moble or risc
+IA32 is the most up to date x86 version for 32 bit processors
+
+architecture is the instruction set
+MMX- multi media extension instruct for media ops
+SSE- streaming SIMD extension
+SIMD- single instruction multiple data (suppose array A, [1,2,3,4,5] [6,7,8,9,10] writing code that adds the numbers)
+a SIMD would add the arrays in one command
+
+this is how graphics cards work
+common in mm to have highly paralell operations
+
+Itanium with RISC and BLIW
+compiler taking simple instrucions and packing into paralellism
+on-bord x86 engine tho..
+
+x86 clones (AMD) advanced mirco devices
+
+
+Definitions:
+
+Architecture also ISA, the parts of a processor design that one needs to understand to write assembly code
+
+Microarchitecture- Implementation of the architecture for example cache sizes and core frequencies clocks speeds ect
+
+CPU is composed of a pc program counter, extended and long, because we are extended to 32 bit machine now in the future
+purpose of the prgram counter is to keep track of the address of the next instruction to be executed
+at any given time the proc is in the state...
+more background..clocks look like square waves of on off
+in one whole  clock cycle the processor has to process an instruction
+
+in RISC most all instructions have the same length
+0-4-8-12
+^how the addresses move per instructions in RISC same instruction length
+
+Memory addresses and instructions
+
+CPU register kind of like a chalkboard for extra space to write instructions
+extremely fast, no overhead because its close to the processor or in the CPU processing unit lol
+
+Condition Codes--jumps and branches
+if-do--jumping the program counter to either t or f is a jump
+
+how recursion actually works on a processor
+8 registers but we have to keep track of unlimited amount of function call
+stacks are a data structure that keep track of function calls on FIFO basis
+allocating a chunk of RAM to function calls for the stack
+
+Integer data of 1, 2, 4 bytes
+Data and adressed (untyped pointers)
+
+Floating point data 4, 8, 10 bytes
+
+No aggregate types such as arrays or structures
+just contiguously allocated bytes in memory.
+All pointers. 
+a pointer is a 32-bit unsigned int pointing to an address inmemory where something may be stored
+
+variable byte lengths
+perform arithmaic on register or memory data
+transfer da
+
+/usr/local/bin/gcc -01 -S code.c
+produces file code.s
+ebp is the start of a function in memory
+basic function pushes onto the stack performs arithmatic and pops off the stack
+Disassembling code..
+now you can read compiled code
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+CIS 314 final review
+-=-=-=-=-=-=-=-=-=-=-
+you can be within the same big O time complexity and still improve your algorithm by 100x using this course
+This is heavily dependant on the hardware which differs from 313 which doesn't take hardware into account
+
+There isn't always an elegant solution due to hardware even though something like stride can be essential to keep low
+
+Go through all the slides
+
+2# once you get to the next iteration you cant reuse the values
+
+data access is a linear access of data
+you have a 2d array but why store it like that?
+keep a 1 demensional array
+need 2d for populating the location
+but 1 demensional data map for data modification mainly for speed
+
+water is trickier than cloth
+each vertice has to check its neighbor for the wave effects to be fluid motion
+were hoping that the neighbors are in cache, otherwise its going to take possibly seconds to fetch&exec the data
+
+keep all of the computations in a localized area
+looks like 6 nested for loops...which looks like area within area within area within area within area...
+
+
+keeping the data as localized as possible
+brute force multiplication is good for this, do partial sums
+Blocking is a good technique for this
+
+All systems favor cache friendly code
+Topics
+-=-=-=-=-=-=-=-=-
+pipeline stages and paralell instructions
+circuits
+multiplexor latches --study these!!
+and or not
+Know 25 Y86 instructions
+Hazards with pipelining- data dependencies, forwarding, branch hazards(mispredicted branches in conditionals, so how many cycles do we lose?), return hazards
+Load-use has a delay cycle of 1
+Forwarding means the data is ready at the end of execute or the beginning of memory
+Optimizations: remove procedure calls and memory references, also loop unrolling, use blocking(not on final)
+Memory: SRAM vs DRAM, memory heiarchy [6.1]
+Caching: locality, direct mapped cache, 2-way set associative cache
+
+-=-=-=-=-=-=-=-=-
+
+#1 2 bytes is equal to 8 bits, the first 2 bits is the instruction code, the second two are, the next 4 are the registers
+
+#2.finalrev			  PIPELINE
+3 stalls needed without forwarding
+1 stall with forwarding ALSO forwarding means we go straight to the execution stage
+and skips over the fetch and decode stages
+If we switch the first two instructions we can do the wb with forwarding without any stalls !!EXQUEST
+
+irmovl 314 eax        FDEMW
+
+mrmovl 4(ecx) ebx	   FDEMW
+
+addl ebx eax			FDEMW
+
+stall needed for forwarding if there is a load use problem
+3 stalls for waiting on return address
+2 stalls for mispredicted branch
+1 stall for load use
+
+#3.
+What about the good exhibits good temporal locality?
+temporal locality
+spatial locality-accessing the array somewhat sequentially
+The code could be more cache friendly by reducing the stride from n to 1
+switching j and i would acheive a better stride length
+
+
+
+
+

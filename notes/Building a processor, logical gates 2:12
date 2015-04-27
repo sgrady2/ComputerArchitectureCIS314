@@ -1,0 +1,21 @@
+Building a processor, logical gates 2/12
+overview of logic design
+hardware requirements
+communication
+	high or low voltage 01
+computation
+	computing boolean functions
+storage
+	store bits on tape or cd
+
+a really simple circuit is a bit equality circuit
+we cant build an and gate with 32 inputs but we can make 16 and gates for 2 inputs each
+
+ALU
+collection of circiutry doing a lot of the num crunching
+continuiously responding to inputs
+corresponding to 4 arithmatic/logical operations in y86
+
+final bit
+
+

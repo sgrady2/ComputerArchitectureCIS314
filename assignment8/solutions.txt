@@ -1,0 +1,88 @@
+//Sean Grady
+//CIS 314
+//Assignment 8
+//
+1:6.39
+struct point_color {
+	
+	int c;
+	int m;
+	int y;
+	int k;
+
+
+};
+
+struct point_color square[16][16];
+int i, j;
+
+Assum the following:
+
+sizeof(int) == 4
+square begins at memory address 0
+the cache is initially empty
+the only memory accesses are to the entries of the array square. Variables i and j are stored in register
+
+Determine the cache performance of the following code:
+
+	for (i=0;i<16;i++){
+		for(j=0;j<16;j++){
+			square[i][j].c = 0;
+			square[i][j].m = 0;
+			square[i][j].y = 1;
+			square[i][j].k = 0;
+
+		}
+	}
+
+A. What is the total number of writes?
+The total number of writes here is 16 (or 2^4)* 16 so 2^4*2^4 *4 (or 2^2)=2^10= 1024
+B. What is the total number of writes that miss in the cache?
+To calculate the total number of writes that miss we need to know the block size we calculate this by using
+the given size of the type which is 4bytes*8bytes =32. The inner loop will only miss half the time so we have 16/2 = 8 misses for each inner loop iteration and 16 for each outer loop 8*16= 128 write misses.
+So the cache misses 128 times out of a total 1024.
+C. What is the miss rate?
+The miss rate is the number of misses divided by the number of writes so 1/16
+2:6.40
+
+for (i=0;i<16;i++){
+		for(j=0;j<16;j++){
+			square[j][i].c = 0;
+			square[j][i].m = 0;
+			square[j][i].y = 1;
+			square[j][i].k = 0;
+
+		}
+	}
+The difference in the code is that i and j have been switched when referencing position in the 2d array
+This changes the stride in memory since we are now incrementing the inner loop with the first value instead of the second
+A. The number of writes is the same as before which is 4*16*16 or 1024.
+B. The number of misses here is 16*16 because unlike the last code the stride has changed so the inner loop misses every time so 16*16 = 256 misses 
+C. So the miss rate is 256/1024=1/4 miss rate
+
+3:6.:41
+for (i=0;i<16;i++){
+	for(j=0;j<16;j++){
+		square[i][j].y =1;
+	}
+}
+for (i=0;i<16;i++){
+	for(j=0;j<16;j++){
+		square[i][j].c =0;
+		square[i][j].m =0;
+		square[i][j].k =0;
+
+	}
+}
+A. The total number of writes is the number from the first loop which is 16*16*1 + the number of writes from the second for loop 16*16*3 = 1024 again.
+
+B. The total number of writes that miss in the cache in the first loop is 16*16/2= 128 because 2 iterations of the inner loop can be held within each block so we miss every other and the second loop is 16*16/2= 128 so the total number of misses is 256.
+
+C. The miss rate is 256/1024 again which is 1/4.
+
+
+
+
+
+
+

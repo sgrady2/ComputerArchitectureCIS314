@@ -1,0 +1,72 @@
+Building blocks
+combinational logic
+-computing booleans, continuuosly responding to input changes, operate on data and control
+storage elements
+-store bits adressable memory, non-adressable register, loaded only as clock rises
+
+fetch and execute
+starts at the PC
+fetch from instruction memory.
+decode the instruction
+send to alu for computation
+send to memory address the data
+write back to the register and increment the PC
+
+src is register ID
+val is register Val
+dst is destination register
+Loading from memory requires all 5 stages and is the longest path
+
+every instruction code has an
+icode= instruction code instruction function
+first is the family, second is the specific instruction function
+optional registers A and B
+and optionall a value 
+- -  -  -  ------
+5 0 ra rb  D
+
+the fetch stage
+===============
+from the PC keeping track of next instruction
+split the instruction
+take 0th byte and determine the type of function and the function
+from the instruction code we validate the given instruct
+increment PC by 2 to start at the registers now keeping track of the instruction code and function
+
+Decoding Logic
+===============
+
+
+Executed Logic
+=-=====-=-=-=-=-=
+ALU unit implements 4 required functions and generates code values
+CC registers with 3 condition code bits
+cond
+computes conditional jump/move flags
+
+Memory Logic
+=-=-=-=-=-=-=-=-=
+reads or writes memory word
+
+Control Logic
+stat: what is the instruction status?
+mem read:should the word be read
+mem write:should word be written?
+mem addr:select the address
+mem data:select the data
+
+Write Back
+=-=-=-=-=-=-=-=-=-=
+Register file reads port A and B
+
+
+Vals go by their first letter
+P PC
+M Memory
+C Constant
+A srcA
+B srcB
+E ALU
+
+call looks like a jump
+

@@ -1,0 +1,25 @@
+//Solutions.txt for Assignment 6
+//Sean Grady CIS314
+Consider the following Y86 code:
+
+addl %eax %eax
+mrmovl 0(%ecx) %ebx
+cmpl %ebx %eax
+
+How	many pipeline stalls (or bubbles) are required when running the above code with and
+without	forwarding (see	sections 4.5.5-4.5.8)?
+
+addl %eax %eax			F D E M W|
+mrmovl 0(%ecx) %ebx		  F D E M W
+cmpl %ebx %eax				F D E| M W
+
+We would use the bubbling technique for when we need to decode the value of a register in one instruction of the pipeline stage, but the value of that register has not yet been written back (or finished the writeback stage of the pipeline). So we bubble, or let the hardware pass on one instruction, to delay clock cycle of the next instructions, see example below. The given code requires 3 bubbles to run correctly because when the 3rd instruction is at the decode stage of the pipeline, we need the values of eax and ebx the registers we want to use, to already have been written back. So we bubble 3 times so that when we move to the decode stage of our cmpl ebx eax call, both of the values have been written back and are available for decoding correctly.
+ 
+
+addl %eax %eax			F D E M W|
+mrmovl 0(%ecx) %ebx		  F D E M W|
+bubble 					        E M W
+bubble 					          E M W
+bubble  						    E M W
+cmpl %ebx %eax				      F| D E M W
+

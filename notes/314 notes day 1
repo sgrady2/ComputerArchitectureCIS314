@@ -1,0 +1,16 @@
+314 notes day 1
+first course in system group
+getting to know computers systems better to write more efficient code
+
+compiler optimization,
+what it can, cant might or mightnot
+
+other major optimization is in terms of memory management spoiler--no 2 systems have the same memory configurations
+as were writing applications theres no garuntee on what is system will use the application
+
+We are studying 32 bit architectures, specifying this in compilation is useful and possible
+
+Ch1 inclass
+The journey of hello.c
+Preprocessor cpp
+

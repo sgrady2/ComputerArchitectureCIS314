@@ -1,0 +1,34 @@
+Fetch---->Execute(Loop)
+
+Instruction Fetch-->Decode Instr-->Execute--->Memory--->Writeback changes to registry
+
+Encoding Byte values
+Hex Dec Binary
+
+8 bits is a byte
+
+Machine words---size defined by processor
+
+32 bit machine is a 32 bit word size
+gives 2^32-1 is a 4GB address
+4 billion bytes
+high end systems --64bit machines support 48 bit adresses which is 256TB
+x86 originally 16 bit machine
+char--1 byte
+short--2bytes
+int 4 bytes
+long 4 bytes x86 8bytes same as the word size of the machine
+longlong 8bytes
+
+representing a color
+R G B each as a byte
+0x 00 FF FF 00
+&0x 00 FF 00 00	Copy over here
+|0x 00 00 12 00 Plug in here
+
+MAKES SENSE here
+FF are nibbles
+
+mask- hex value used as input to bitwise op
+
+

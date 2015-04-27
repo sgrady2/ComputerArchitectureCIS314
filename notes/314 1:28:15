@@ -1,0 +1,50 @@
+314 1/28/15
+
+C compiles into assembly language, Assembly language is then compiled to machine language so we are closer
+to talking directly to the processor
+
+leal allows us to do multiple instructions at a single command
+
+optimizing use of registers- the more we can do with registers the less we need to move the data
+
+leal (edx, edx, 2), eax == y * 2+y so 3*y
+
+sall $4, eax shift by 16 so 3*16= 48y
+
+8(%ebp) "8 offset from the base pointer"
+
+Control condition codes
+=-=-=-=-=-=--=-=-=-=-=-=
+CF ZF SF OF EIP is the instruction pointer
+
+Carry Flag- 1111 = 15 + 0100= 4 = 19 4 bit unsigned will overflow after 15 
+
+Zero Flag- if t == 0
+
+Signed Flag- if result is signed
+
+jle jump less equal
+jmp go to
+
+Convert loops to the GOTO format, inversing the logic and switching out curly braces for GOTO jumps
+
+Processors will guess based on trying to get the most effecient work done possible
+dealing with realities of hardware
+
+cmovg avoids jumping on simple arithmatic. will do arithmatic first then choose the one that is true
+
+Do while for loooops
+
+ a while loop is a repeated if statement with an end condition that jumps out
+
+
+ 
+
+Overflowflag- if signed value overflows this can be detected by addition of 2 positive or 2 negative numbers being oppositely signed
+
+RISC Reduced instruct set computing
+
+cmpl/cmpq compare commands, does the operation without setting the destination and setting flags if necessary
+if you do this and the SF is set, then a less than b
+if theyre equal ZF
+

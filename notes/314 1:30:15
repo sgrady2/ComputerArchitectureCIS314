@@ -1,0 +1,64 @@
+314 1/30/15
+
+if else block negates the condition requiring a jump to the else
+
+the processor doesnt read curly braces it reads jumps
+Called GOTO version
+so if (!condition)
+		goto else
+	a()
+		goto DONE
+	else: b()
+	c()//regardless
+
+the loop might not stop if we do signed and unsigned arithmatic right shifts
+
+the compiler converts loops into do while loops and then to goto form
+
+DEFINE CONSTANTS FOR LOOPS, using i<a.length i++ will cause the compiler to add an extra n branches for n elements when
+computing a.length
+
+stack and recursion referring to a recursive tangent of namespaces
+
+the stack bottom is on top the stack top is on bottom
+as we move toward the bottom of the stack(up geographically up), adresses increase
+as we move toward the top of the stack (the bottom geographically), adresses decrease
+
+stack pointer is %ESP!!extended stack pointer
+the register that holds the top of the stack
+EBP holds the bottom of the stack, remember these are flipped
+
+
+stack is keeping track of function calls
+heap is keeping track of explicit memory
+ie mallocing data
+the stack grows down toward the heap
+the heap grows up toward the stack
+when you add things onto the stack addresses get smaller
+
+when pushl src
+fetch operand at src
+decrement %esp by 4 because the top has now moved (up lol)
+
+popl will add 4 to the esp because the top has again moved only closer to the bottom this time because we removed an element
+
+push and pop are a combination of adding and subtracting address and pushing and poping elements off the stack
+
+call label
+=-=-=-=-=-=
+push return address onto stack
+jump to label
+
+ret
+=-=-=-=-=
+this pops the return address of the stack
+
+
+%EIP
+=-=-=-=-=-=
+instruction pointer referecning the current call
+
+
+
+
+

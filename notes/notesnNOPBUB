@@ -1,0 +1,44 @@
+nop is like a pause to the hardware, not turninng it off but pausing so we can have accurate writebcks before
+decoding new instructions with existing incoorect values
+-its possible to add 2 nops instead of just one
+Stall conditon:
+srcA and srcB of current instruction in decode stage 
+if we can detect that theres a problem, 
+naiive pipeline-register isnt written until completion of writeback
+source operands read from register file
+5 cases for the registers?
+-WB valE or valM
+-MEm valE or valM
+-previous cycle
+-first cycle
+so u can use the information in the pipline stages, so write more software to utilize the hardware
+yaey--caviot
+--works in all cases but one
+--reading values from memory!!
+--which is also done last
+FDEMW
+in this case we delay cycles
+in other cases we use valE or valM registers to use data weve already calculated
+Load Use condition**
+nop or the processor stalls dyanmically
+Data Hazard
+Control hazards are another subject area
+predict that its taken, the performance is better
+^>PC or valC is only correct if branch is taken
+Recovering from a misprediction
+or a midpredicted jump
+forwarding is the term for pulling 'valx' from other stages
+check out the pipeline simulator
+handling misprediction
+worse case for simplified hardware is 2 extra instructions
+dekete branch not taken on following cycle replace instruct in execute and decode by bubbles
+no side effects have occured
+load fail is 1 second penalty
+forwarding penalty can be 3
+return is nasty
+overhead when calling functions
+stack pointers, saving registers backup, returning and sp then PC
+with assembly, AND C, we can get rid of function call overhead
+DH
+most handled by forwarding
+checkwrapupslide App2e

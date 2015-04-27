@@ -1,0 +1,130 @@
+Sean Grady
+CIS 314 Winter
+Assignment 5
+Solutions.txt
+
+1.
+int f(int x) {
+ return 16*x;
+}
+int g(int a, int b) {
+ return f(a) + f(b);
+}
+F is going to be the callee function as it calls no other functions and G is going to be the caller function so by convention F will use callee registers and vice versa
+
+
+F:
+	pushl %ebp
+	rrmovl %esp, %ebp
+	pushl %ebx
+	pushl %esi
+	mrmovl 8(%ebp), %ebx
+	L1:
+		irmovl $16, %esi
+		addl %ebx,%eax
+		subl $1,esi
+		jle .L1 //jle compares with the sign flag set by subl used in the last command
+	pop %ebx
+	pop %ebp
+	ret
+
+The y86 code above first peforms stack frame operations to set ebp and esp to call f
+then we push ebx and esi to save the value using the callee saving convention
+then the parameter is copied to the register ebx and we enter L1
+L1 sets the loop count at 16 and decrements, so when the subl $1 goes to zero 
+flags will be set and jle compares with the zero flag set and loops if no flags come up
+
+G:
+	pushl %ebp
+	rrmovl %esp, %ebp
+	mrmovl 8(%ebp), %eax
+	mrmovl 12(%ebp), %edx
+	push %eax
+	push %edx
+	Call F
+	pop %edx
+	rrmovl %eax, %edx
+	call F
+	addl %edx, %eax
+	pop %edx
+	pop %ebp
+	ret
+performing stack frame operations first and then saving the parameters in caller
+registers eax and edx next i push both of these registers to save them by the caller saving
+convention and next I call F, poping edx so that I call f(a) then call F again so f(b) is saved in register edx and then add the two registers edx and eax to return.
+
+2. In Section 3.4.2, the IA32 popl instruction was described as copying the result from the top of the stack to the destination register and then incrementing the stack pointer. So, if we had an instruction of the form popl REG, it would be equivalent to the code sequence:
+movl (%esp), REG //read REG from stack
+addl $4, %esp	//Increment stack pointer
+
+A.  In light of analysis done in Problem 4.7, does this code sequence correctly describe the behavior of the instruction popl %esp? Explain.
+
+from problem 4.7 we understand popl %esp to set the stack pointer to a value in memory. so its equivalent to the instruction mrmovl (%esp),%esp
+the instruction popl %esp will set %esp to the next stack frame up and increment %esp by 4
+this is incorrect because %esp will be off 4 bytes above where it should be.
+
+B.  How could you rewrite the code sequence so that it correctly describes both the cases where REG is %esp as well as any other register?
+movl (%esp),REG   //Read REG from stack
+addl $4,%esp	  //increment stack pointer
+changes to
+
+addl $4,%esp
+movl -4(%esp), REG
+
+I want to increment the stack pointer, but i also dont want this to affect the move
+of the register. So I use -4(%esp),REG to reference 4 below o fix the error
+described in part A.
+
+
+
+
+
+mrmovl (%esp),REG
+
+3.
+rrmovl %ebp, %esp
+popl %ebp
+Suppose we add this instruction to the Y86 unstruction set, using the following encoding
+Byte  0  1  2  3  4  5
+leave D0
+Describe the computations performed to implement this instruction. Use the computations for popl.
+Figure 4.20 outlines the computations at each step of the instruction's life cycle (below)
+{} curly brackets denote the computation in sequential implementation of the Y86 assembly code.
+Fetch: {icode:ifun<---M1[PC]} //this gets the next instruction
+	  also increment the PC by one or  {Pval<-pc+1}
+	  this above step is basically the same as the pop step in figure 4.20 and sets up the 
+	  running of the assembly commands
+
+Decode: {valB <---R[%ebp]} valb is used to hold the value of the base stack pointer so
+					  we can execute instructions and execute the the stack pointer later on
+					  ebp is significant because it allows us to know where to go in the stack frame
+					  as it is the base pointer also the src of the command rrmovl %ebp,%esp
+
+execute: {valS <--- valB+4} valS holds the value of esp as 4 above the value of the current stack pointer
+						  which is added to our previous value of the base pointer or valB+4
+
+memory: {ValM<--- M4[valB]} we use the address of valB to find %ebp and store the location in valM 
+						  valM is where we are storing in memory
+
+writeback:  {R[%esp]<---valS} The writeback step uses the values yielded above to assign %ebp and %esp 
+			{R[%ebp]<---valM} to the correct location completing the step rrmovl %ebp, %esp which
+			says do a register to register move of %ebp to %esp
+
+
+PC increment: {PC <--- valP}Lastly the program counter is incremented by one so the processor can move to the next 
+			  instruction it is given
+
+Limitations: Register Overhead
+how many stages are ina modern core i7- 14-16 stages  
+petium 4 had 20 stages
+risc first to do this well
+mips microporessor interlocking
+
+data dependencies are when the result from one instruction used as an operand for 
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+//Sean Grady
+//CIS 314 Winter Wills
+//Solutions.txt
+.L87:
+	movs (%rbx,%rdx,4), %xmm0
+	muls (%rax,%rdx,4), %xmm0
+	addss %xmm0, %xmm1
+	addq $1 %rdx
+	cmpq %rcx,%rdx
+	jl .L87
+
+1-5.15
+A. See image attachment
+
+B. The lower bound on the CPE for the data type float determined by the critical path is
+The latency table in figure 5.12 shows that for type float we have a latency of 3/1 for addition
+And the critical path we are looking at is sum = sum + udata[i]+vdata[i] so there are 3 FP additions
+So we can break this down to L*n+K where L is the latency, L represents overhead of calling the function and initiating and terminating the loop. The CPE is equal to the latency bound L. So in this critical path we have 3*2+2 = 8
+
+
+C. The lower bound on the CPE for the data type interger determined by the critcal path then is 
+1*2+2= 4 which makes sense because it's going to be lower since the latency of integers is less than the latency of floating point values for addition.
+
+D. The two floating point versions can have CPEs of 3.0 even though the multiplication requires 4 or 5 clock cycles because we can opimize our pipeline to allow multiple instructions to occur within a clock cycle which reduces our CPE while the multiplication operation still requires 4 or 5 clock cycles.
+
+
+2-5.16
+A. The inner product procedure cannot acheive a CPE of less than 2.00 because when we use the loop unrolling technique we have to have 2 different loops to cover all the elements in the list. This could also account for the 2 add operations in the critical path of the loop which can't be run in paralell because the processor can only achieve one add operation per execution.
+
+3-5.17
+A. The factor that limits the performance to a CPE of 2.00 is the fact that we are using loop unrolling here and our data types which limit the CPE to 2 instead of being able to reduce to 1. 
+
+4. From changing the vector size inputs I noticed that the time increases greatly when not using the loop unrolling technique. Loop unrolling however reudces the overall CPE of my program when increasing the VECTOR_SIZE attribute of my vectors.  This illustrates the overall point of optimization in chapter 5.
